@@ -1,9 +1,6 @@
 package com.ceenuts.spring5webapp;
 
-import com.ceenuts.spring5webapp.controllers.ConstructorInjectedController;
-import com.ceenuts.spring5webapp.controllers.MyController;
-import com.ceenuts.spring5webapp.controllers.PropertyInjectedController;
-import com.ceenuts.spring5webapp.controllers.SetterInjectedController;
+import com.ceenuts.spring5webapp.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,11 @@ public class Spring5webappApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(Spring5webappApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+
+		System.out.println("-------- Profiles");
+		System.out.println(i18nController.sayHello());
 
 		MyController myController = (MyController) ctx.getBean("myController");
 
