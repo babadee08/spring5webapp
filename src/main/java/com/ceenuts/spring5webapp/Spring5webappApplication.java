@@ -1,6 +1,8 @@
 package com.ceenuts.spring5webapp;
 
 import com.ceenuts.spring5webapp.controllers.*;
+import com.ceenuts.spring5webapp.services.GreetingService;
+import com.ceenuts.spring5webapp.services.I18nSpanishGreetingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +37,13 @@ public class Spring5webappApplication {
 		System.out.println("-------- Constructor");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("Testing Scoped Beans");
+		GreetingService greetingService = (GreetingService) ctx.getBean("i18nService");
+		I18nSpanishGreetingService greetingService2 = (I18nSpanishGreetingService) ctx.getBean("i18nService");
+		System.out.println("Memory Address first: " + greetingService);
+		System.out.println("Memory Address second: " + greetingService2);
+		System.out.println(greetingService2.getEmail());
 	}
 
 }
